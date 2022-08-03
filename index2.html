@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Use of magic methods in eloquent</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<style>
+			#logo {
+			  position: absolute;
+			  top: 20px;
+			  left: 20px;
+			  width: 250px;
+			}
+			#improwised_logo {
+			  position: absolute;
+			  top: 20px;
+			  right: 20px;
+			  width: 250px;
+			}
+			#magic-hat {
+				position: inherit;
+				margin: -5px !important;
+				width: 40px;
+			}
+			.active .our-focus {
+				color: black;
+				-webkit-animation: colorchange 50s 5s 1 normal;
+			}
+			@-webkit-keyframes colorchange {
+				1% {
+					
+					color: red;
+				}
+				100% {
+					
+					color: red;
+				}
+			}
+			#querybuilder {
+				height: 450px;
+			}
+			#dynamic-where {
+				height: 250px;
+			}
+			
+			#qb-link {
+				font-size: 0.5em;
+			}
+			#slide-link {
+				font-size: 0.8em;
+			}
+		</style>
+		  
+	</head>
+	<body>
+		<img id="improwised_logo" src="https://www.improwised.com/img/logo.png" alt="Improwised Technologies">
+		<img id="logo" src="img/laravel.svg" alt="{{ .Param "improwised_logo.alt" }}">
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h3>Use of magic methods in eloquent</h3>
+				</section>
+				<section>
+					<h2>Hidden Feature in Eloquent</h2>
+					<img class="fragment" id="dynamic-where" src="/img/dynamic-where.svg"/>
+					<ul>
+						<li class="fragment">How it works?</li>
+						<li class="fragment">Answer is: It's MAGIC <img id="magic-hat" src="img/magic-hat.gif"></li>
+					</ul>
+				</section>
+				<section data-state='active'>
+					<h2>Magic Methods in PHP</h2>
+					<ul>
+						<li>__construct()</li>
+						<li>__destruct()</li>
+						<li class="our-focus">__call()</li>
+						<li class="our-focus">__callStatic()</li>
+						<li>__get()</li>
+						<li>__set()</li>
+						<li>__isset()</li>
+						<li>__unset()</li>
+					</ul>
+					<ul>
+						<li>__sleep()</li>
+						<li>__wakeup()</li>
+						<li>__toString()</li>
+						<li>__invoke()</li>
+						<li>__set_state()</li>
+						<li>__clone()</li>
+						<li>__debugInfo()</li>
+					</ul>
+				</section>
+				<section>
+					<section>
+						<h2>LARAVEL 5.8 CODE</h2>
+						<p>
+							<a id="qb-link" href="https://github.com/laravel/framework/blob/5.8/src/Illuminate/Database/Query/Builder.php#L2986">https://github.com/laravel/framework/blob/5.8/src/Illuminate/Database/Query/Builder.php#L2986</a>
+						</p>
+						<img id="querybuilder" src="/img/querybuilder.svg"/>
+					</section>
+					<section>
+						<h2>LARAVEL 5.7 CODE</h2>
+						<p>
+							<a id="qb-link" href="https://github.com/laravel/framework/blob/5.7/src/Illuminate/Database/Eloquent/Builder.php#L1355">https://github.com/laravel/framework/blob/5.7/src/Illuminate/Database/Eloquent/Builder.php#L1355</a>
+						</p>
+						<img id="querybuilder" src="/img/qb-static.svg"/>
+					</section>		
+				</section>
+				<section>
+					<h2>Use case</h2>
+					<ul>
+						<li class="fragment">Validation Methods</li>
+						<li class="fragment">API Call</li>
+						<li class="fragment">Query Builder</li>
+						<li class="fragment">Macros</li>
+						<li class="fragment">Error Handling</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Thanks!</h2>
+					<p>
+						Code: <a id="slide-link" href="https://github.com/munir131/magic-methods-slides">https://github.com/munir131/magic-methods-slides</a>
+					</p>
+					<p>
+						Munir Khakhi
+					</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
